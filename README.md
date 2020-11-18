@@ -24,3 +24,9 @@ People should be able to sign up and login (you can create one or use FB signup)
    * [Python](https://www.python.org/)
    * [javascript](https://www.javascript.com/)
   
+## Setup
+
+1. `git clone https://github.com/Mayank-Bhatt-450/cookbook.git`               download or clone then extract the files
+2. `pip install -r requirements.txt` 
+ _or place virtual environment and then install
+3. `manage.py runserver`
