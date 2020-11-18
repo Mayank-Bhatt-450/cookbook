@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block body_block %}
+  <div class="jumbotron">
+    <h1>{{recipe_list.cuisine_name}}</h1>
+<div class="container">
+  <div class="row">
+    {% for recipe in recipe_list %}
+
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <a href="detail/{{recipe.id}}">
+            <img class="bd-placeholder-img card-img-top" width="100%" height="225"src="{{recipe.image.url}}" focusable="false" role="img" aria-label="Placeholder: Thumbnail">
+            <div class="card-body">
+              <p class="card-text">{{recipe.name}}</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <small class="text-muted">{{recipe.time}} to cook</small>
+              </div>
+            </div>
+          </a>
+          </div>
+        </div>
+      {% endfor %}
+
+</div>
+</div>
+
+
+
+  </div>
+
+
+{% endblock %}
