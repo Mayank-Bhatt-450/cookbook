@@ -91,14 +91,19 @@ def add_fav(request,id,usr):
         a.save()
         print(a.name,b.username,a.favorites.all())
     return HttpResponseRedirect('/detail/'+str(id))
-
+def admins(request):
+    return HttpResponseRedirect('/admin')
 def remove_fav(request,id,usr):
+
     a=recipe.objects.filter(id=id)
     b=User.objects.filter(username=usr)
+
     if a!=[] and b!=[]:
         a=a[0]
         b=b[0]
+        print('-----------------\n\n\n',a.name,b.username,a.favorites.all())
         a.favorites.remove(b)
+    print(a.name,b.username,a.favorites.all())
     return HttpResponseRedirect('/detail/'+str(id))
 def favorite_v(request,usr):
     obj = get_object_or_404(User, username=usr)
