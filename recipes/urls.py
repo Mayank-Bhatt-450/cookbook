@@ -18,8 +18,10 @@ from django.urls import path,include
 from django.conf.urls.static import static
 from django.conf import settings
 from recipes import views
+from django.contrib import admin
 app_name = 'goto'
 urlpatterns = [
+    path('dfdsfdsf', views.admins,name='admins'),
     path('', views.list_cuisines,name='home'),
     path('cuisine_id_<cuisine_id>', views.list_recipe,name='cuisine'),
     path('detail/<recipe_id>', views.detail_recipe,name='detail_recipe'),
@@ -30,5 +32,5 @@ urlpatterns = [
     path('del_comment/<pk>/<id>', views.del_comment,name='del_comment'),
     path('add_fav/<id>/<usr>', views.add_fav,name='add_fav'),
     path('remove_fav/<id>/<usr>', views.remove_fav,name='remove_fav'),
-    path('favorite_v/<usr>', views.favorite_v,name='favorite_v'),
+    path('favorite_<usr>', views.favorite_v,name='favorite_v'),
 ]
