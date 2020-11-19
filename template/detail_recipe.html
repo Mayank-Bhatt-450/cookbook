@@ -1,5 +1,23 @@
 {% extends "base.html" %}
 {% block body_block %}
+<script>
+function flag(){
+  console.log("Hello world!");
+  document.getElementById("custId").value = "1";
+}
+function tuggleflag(){
+  if(document.getElementById("custId").value ==1){
+    var myobj = document.getElementById("myDIV");
+      myobj.remove();
+  }
+  else{
+    var myobj = document.getElementById("myDIV1");
+      myobj.remove();
+  }
+
+}
+</script>
+<input type="hidden" id="custId" name="custId" value="0">
 <div class="row">
 <div class="col-1">
 </div>
@@ -22,14 +40,11 @@
             {{recipe.time}}</p>
         </div>
         <div class="col-sm pl-0 pr-0">
+          {% if user.is_authenticated %}
+          <a href="{% url 'goto:add_fav' recipe.id user %}"><button id="myDIV" type="button" class="btn btn-outline-danger rounded-circle">💗</button></a>
 
-          {% with list1=0 %}
-
-
-
-
-            {% endwith %}
-
+          <a href="{% url 'goto:remove_fav' recipe.id user %}"><button id="myDIV1"type="button" class="btn btn-outline-danger rounded-circle">🤍</button></a>
+          {% endif %}
 
 
 
@@ -39,22 +54,20 @@
 
               {% if user.username == usr.username %}
 
+               <script>flag();</script>
+
               {% endif %}
 
 
           {% endfor %}
-
-          {% if user.username in fav >= 1 %}
-          {% endif %}
+          <script>tuggleflag()</script>
 
 
 
 
-          {% if user.is_authenticated %}
-          <a href="{% url 'goto:add_fav' recipe.id user %}"><button id="myDIV" type="button" class="btn btn-outline-danger rounded-circle">💗</button>add fav</a>
 
-          <a href="{% url 'goto:remove_fav' recipe.id user %}"><button type="button" class="btn btn-outline-danger rounded-circle">🤍</button>remove fav</a>
-          {% endif %}
+
+
 
 
         </div>
