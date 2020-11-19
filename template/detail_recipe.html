@@ -6,7 +6,7 @@ function flag(){
   document.getElementById("custId").value = "1";
 }
 function tuggleflag(){
-  if(document.getElementById("custId").value ==1){
+  if(document.getElementById("custId").value !=1){
     var myobj = document.getElementById("myDIV");
       myobj.remove();
   }
@@ -41,9 +41,9 @@ function tuggleflag(){
         </div>
         <div class="col-sm pl-0 pr-0">
           {% if user.is_authenticated %}
-          <a href="{% url 'goto:add_fav' recipe.id user %}"><button id="myDIV" type="button" class="btn btn-outline-danger rounded-circle">💗</button></a>
+          <a href="{% url 'goto:remove_fav' recipe.id user %}"><button id="myDIV" type="button" class="btn btn-outline-danger rounded-circle">💗</button></a>
 
-          <a href="{% url 'goto:remove_fav' recipe.id user %}"><button id="myDIV1"type="button" class="btn btn-outline-danger rounded-circle">🤍</button></a>
+          <a href="{% url 'goto:add_fav' recipe.id user %}"><button id="myDIV1"type="button" class="btn btn-outline-danger rounded-circle">🤍</button></a>
           {% endif %}
 
 
